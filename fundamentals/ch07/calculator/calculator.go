@@ -22,6 +22,7 @@ func (c *Calculator) addMathFunction(m mathFunction.MathFunction) {
 func (c *Calculator) doCalculation(name string, arg float64) (float64, error) {
 	var result float64
 	for _, f := range c.functions {
+		// this line converts input operation string as all lower case so inputs case-insensitive
 		if strings.ToLower(name) == strings.ToLower(f.GetName()) {
 			result = f.Calculate(arg)
 			return result, nil
