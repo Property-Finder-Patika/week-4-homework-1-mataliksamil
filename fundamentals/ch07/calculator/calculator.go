@@ -17,6 +17,7 @@ type Calculator struct {
 
 func (c *Calculator) addMathFunction(m mathFunction.MathFunction) {
 	c.functions = append(c.functions, m)
+	//fmt.Printf(" functions :  %#v \n", c.functions)
 }
 
 func (c *Calculator) doCalculation(name string, arg float64) (float64, error) {
@@ -24,6 +25,7 @@ func (c *Calculator) doCalculation(name string, arg float64) (float64, error) {
 	for _, f := range c.functions {
 		// this line converts input operation string as all lower case so inputs case-insensitive
 		if strings.ToLower(name) == strings.ToLower(f.GetName()) {
+			fmt.Printf(" f degiskenin degeri %#v, tipi : %T \n", f, f)
 			result = f.Calculate(arg)
 			return result, nil
 		}
@@ -32,8 +34,8 @@ func (c *Calculator) doCalculation(name string, arg float64) (float64, error) {
 }
 
 func main() {
-	functions()
-	calculator()
+	//functions()
+	//calculator()
 	startCalculator()
 }
 
@@ -73,9 +75,10 @@ func calculator() {
 	myCalculator.addMathFunction(mathFunction.Cos{"Cosines"})
 	myCalculator.addMathFunction(mathFunction.Log{"Log"})
 
-	fmt.Println(myCalculator.doCalculation("Sinus", math.Pi/6))
-	fmt.Println(myCalculator.doCalculation("Cosines", math.Pi/6))
-	fmt.Println(myCalculator.doCalculation("Log", math.E))
+	/* 	fmt.Println(myCalculator.doCalculation("Sinus", math.Pi/6))
+	   	fmt.Println(myCalculator.doCalculation("Cosines", math.Pi/6))
+	   	fmt.Println(myCalculator.doCalculation("Log", math.E)) */
+
 }
 
 func startCalculator() {
@@ -100,9 +103,11 @@ func startCalculator() {
 		//	fmt.Println(err)
 		//	os.Exit(0)
 		//}
+		flag = true
 		var fName string
 		var arg float64
 		fmt.Println("> Enter name of the calculation or enter x to exit:")
+
 		_, err := fmt.Scanf("%s", &fName)
 		if err != nil {
 			fmt.Println(err)
@@ -119,6 +124,7 @@ func startCalculator() {
 				fmt.Println(err)
 				os.Exit(0)
 			}
+			arg = math.Pi / (180.0 / arg) // angle int terms of radian
 			value, err := myCalculator.doCalculation(fName, arg)
 			if err != nil {
 				fmt.Println(err)

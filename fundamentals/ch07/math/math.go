@@ -1,11 +1,13 @@
 package mathFunction
 
 import (
+	"fmt"
 	"math"
 	"math/rand"
 	"time"
 )
 
+// interface function declarations
 type MathFunction interface {
 	Calculate(arg float64) float64
 	GetName() string
@@ -15,7 +17,9 @@ type Sin struct {
 	Name string
 }
 
+// operations changes according to the type of struct that reaches the interface
 func (s Sin) Calculate(arg float64) float64 {
+	fmt.Println("sinus operation for sin(", arg, ") value")
 	return math.Sin(arg)
 }
 
