@@ -32,8 +32,8 @@ func (c *Calculator) doCalculation(name string, arg float64) (float64, error) {
 }
 
 func main() {
-	//functions()
-	//calculator()
+	functions()
+	calculator()
 	startCalculator()
 }
 
@@ -89,7 +89,7 @@ func startCalculator() {
 
 	fmt.Println("\nCalculator started.")
 	fmt.Println("You can calculate using following functions")
-	for _, f := range myCalculator.functions {
+	for _, f := range myCalculator.functions { // iterate through defined math functions above
 		fmt.Println(f.GetName())
 	}
 
