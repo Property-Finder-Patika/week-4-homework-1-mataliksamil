@@ -1,5 +1,6 @@
 # week-4-homework-1
 
+## All of my work in fundamentals directory
 
 - Please read "A Guide to the Go Garbage Collector" at https://go.dev/doc/gc-guide and come up with questions you may have in the next class.
       
